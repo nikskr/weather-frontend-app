@@ -1,8 +1,25 @@
+import { useEffect } from "react"
+import { useAppDispatch, useAppSelector } from "./hooks/redux"
+import { fetchCurrentWeatherByLocation } from "./store/reducers/ActionCreators"
+import { DEFAULT_CITIES } from "./variables/consts"
+
 function App() {
+  const dispatch = useAppDispatch()
+  const { locs, isLoading, error } = useAppSelector(state => state.currentWeatherReducer)
+
+  useEffect(() => {
+    DEFAULT_CITIES.forEach(city => {
+      dispatch(fetchCurrentWeatherByLocation(city))
+    })
+  }, [])
+
+  console.log(locs)
 
   return (
     <div>
-      APP
+      {isLoading && <h1>Loading weather data...</h1>}
+      {error && <h1>{error}</h1>}
+      {JSON.stringify(locs, null, 2)}
     </div>
   )
 }
