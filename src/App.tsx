@@ -3,7 +3,9 @@
 // import { fetchCurrentWeatherByLocation } from "./store/reducers/ActionCreators"
 // import { DEFAULT_CITIES } from "./variables/consts"
 
-import CurrentWeatherContainer from "./components/CurrentWeatherContainer"
+// import CurrentWeatherContainer from "./components/CurrentWeatherContainer"
+import CityContainer from "./components/CityContainer"
+// import { useAppSelector } from "./hooks/redux" 
 
 function App() {
   // const dispatch = useAppDispatch()
@@ -19,7 +21,8 @@ function App() {
 
   return (
     <div>
-      <CurrentWeatherContainer />
+      <CityContainer />
+      {/* <CurrentWeatherContainer /> */}
       {/* {isLoading && <h1>Loading weather data...</h1>}
       {error && <h1>{error}</h1>}
       {JSON.stringify(locs, null, 2)} */}
