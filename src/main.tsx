@@ -3,11 +3,14 @@ import App from './App.tsx'
 import { Provider } from 'react-redux'
 import { setupStore } from './store/store.ts'
 import './index.css'
+import { BrowserRouter } from 'react-router'
 
 const store = setupStore()
 
 createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
-        <App />
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
     </Provider>
 )

@@ -11,7 +11,7 @@ const initialState: CitiesState = {
         id: i,
         name: city,
         isFavorite: false
-    }))
+    })),
 }
 
 export const citiesSlice = createSlice({

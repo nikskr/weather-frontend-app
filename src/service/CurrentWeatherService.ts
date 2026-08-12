@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { type ILocationCurrentWeather } from "../models/IWeather";
-// import { fetchCurrentWeatherByLocation } from "../store/reducers/ActionCreators";
+import { type ICityForecast, type ILocationCurrentWeather } from "../models/IWeather";
 
 export const currentWeatherAPI = createApi({
     reducerPath: 'currentWeatherAPI',
@@ -14,6 +13,17 @@ export const currentWeatherAPI = createApi({
                     key: import.meta.env.VITE_WEATHER_API_KEY
                 }
             })
+        }),
+        fetchForecastByLocation: builder.query<ICityForecast, string>({
+            query: (location) => ({
+                url: '/forecast.json',
+                params: {
+                    q: location,
+                    key: import.meta.env.VITE_WEATHER_API_KEY,
+                    days: 14
+                }
+            })
         })
+
     })
 })

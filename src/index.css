@@ -18,3 +18,12 @@
     padding: 30px;
     margin: 20px;
 }
+
+.day-weather-card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+    justify-content: center;
+    border: 2px solid lightskyblue;
+}
