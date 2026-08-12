@@ -4,7 +4,9 @@
 // import { DEFAULT_CITIES } from "../../variables/consts";
 // import { currentWeatherSlice } from "./CurrentWeatherSlice";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import WeatherApi from "../../api/WeatherApi";
+// import WeatherApi from "../../api/WeatherApi";
+import axios from "axios";
+import type { ILocationCurrentWeather } from "../../models/IWeather";
 
 // export const fetchCurrentWeatherByLocation = (location: string) => async (dispatch: AppDispatch) => {
 //     try {
@@ -28,7 +30,13 @@ export const fetchCurrentWeatherByLocation = createAsyncThunk(
     'current-weather/fetchByLocation',
     async (location: string, thunkAPI) => {
         try {
-            const response = await WeatherApi.getWeatherDataByLocation(location)
+            // const response = await WeatherApi.getWeatherDataByLocation(location)
+            const response = await axios.get<ILocationCurrentWeather>(`${import.meta.env.VITE_BASE_API_URL}/current.json`, {
+            params: {
+                q: location,
+                key: import.meta.env.VITE_WEATHER_API_KEY
+            }
+        })
             return response.data
         } catch (e) {
             if (e instanceof Error) {
