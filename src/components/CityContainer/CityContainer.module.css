@@ -1,0 +1,27 @@
+.container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.cap {
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+.titleWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+}

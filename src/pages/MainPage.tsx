@@ -1,10 +1,11 @@
-import CityContainer from "../components/CityContainer"
+import CityContainer from "../components/CityContainer/CityContainer"
 
 const MainPage = () => {
     return (
         <>
-            <h1>MAIN</h1>
-            <CityContainer />
+            <CityContainer isFavorites={true} />
+            <hr />
+            <CityContainer isFavorites={false} />
         </>
 
     )

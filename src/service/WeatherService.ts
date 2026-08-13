@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { type ICityForecast, type ILocationCurrentWeather } from "../models/IWeather";
 
-export const currentWeatherAPI = createApi({
+export const weatherAPI = createApi({
     reducerPath: 'currentWeatherAPI',
     baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_API_URL }),
     endpoints: (builder) => ({

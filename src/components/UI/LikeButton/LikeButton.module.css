@@ -1,0 +1,30 @@
+.likeBtn {
+    background: transparent;
+    border: none;
+}
+
+.likeBtn:hover {
+    cursor: pointer;
+}
+
+.heartIcon {
+    width: 30px;
+    height: 30px;
+    fill: transparent;
+    stroke: #ff4757;
+    stroke-width: 2;
+    transition: all 0.3s ease;
+}
+
+.heartIconLiked {
+    width: 30px;
+    height: 30px;
+    fill: #ff4757;
+    stroke: #ff4757;
+    stroke-width: 2;
+    transition: all 0.3s ease;
+}
+
+.heartIcon:hover {
+    stroke-width: 4;
+}
