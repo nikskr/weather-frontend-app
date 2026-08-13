@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router"
-import { useAppDispatch } from "../../hooks/redux"
+import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import type { ICity } from "../../models/ICommon"
 import { weatherAPI } from "../../service/WeatherService"
 import { citiesSlice } from "../../store/reducers/CitiesSlice"
@@ -14,6 +14,7 @@ const CityCard = ({ city }: CityCardProps) => {
     const { bringToTop, toggleFavorite } = citiesSlice.actions
     const { data: weatherData, isLoading, error } = weatherAPI.useFetchCurrentWeatherByLocationQuery(city.name)
     const dispatch = useAppDispatch()
+    const {name: firstCityName} = useAppSelector(state => state.citiesReducer.cities[0])
     const navigate = useNavigate()
 
     function handleFavoriteBtnClick(e: React.MouseEvent, city: ICity) {
@@ -35,24 +36,27 @@ const CityCard = ({ city }: CityCardProps) => {
 
     function handleOnCardClick() {
         dispatch(bringToTop(city))
+        if (city.name === firstCityName)
         navigate(city.name)
     }
 
     return (
-        <>
+        <div className={classes.cityItemLayout}>
             <div onClick={handleOnCardClick} className={classes.cityItem}>
-                <div className={classes.header}>
-                    <h3 className={classes.headerName}>{city.name}</h3>
-                    <LikeButton handleLikeClick={e => handleFavoriteBtnClick(e, city)} isLiked={Boolean(city.isFavorite)} />
-                </div>
-                <div>
-                    {/* <h4>{weatherData.current.condition.text}</h4>
-                    <img src={weatherData.current.condition.icon}/> */}
-                </div>
-                <h4>Temperature: {weatherData.current.temp_c}</h4>
-                <div>Humidity: {weatherData.current.humidity}</div>
-            </div >
-        </>
+            <div className={classes.likeBtn}>
+                <LikeButton handleLikeClick={e => handleFavoriteBtnClick(e, city)} isLiked={Boolean(city.isFavorite)} />
+            </div>
+            <div className={classes.header}>
+                <h3 className={classes.headerName}>{city.name}</h3>
+            </div>
+            <div>
+                <h4>{weatherData.current.condition.text}</h4>
+                <img src={weatherData.current.condition.icon} />
+            </div>
+            <h4>Temperature: {weatherData.current.temp_c}</h4>
+            <div>Humidity: {weatherData.current.humidity}</div>
+        </div >
+        </div>
     )
 }
 

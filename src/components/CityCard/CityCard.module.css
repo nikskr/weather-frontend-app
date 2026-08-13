@@ -1,23 +1,43 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.headerName {
     text-align: center;
     flex-grow: 1;
     font-size: 20px;
 }
 
+.cityItemLayout {
+ width: 100%;
+}
+
 .cityItem {
-    max-width: 200px;
     width: 100%;
     border: 2px solid black;
     border-radius: 10px;
-    padding: 30px;
-    margin: 20px;
+    padding: 10px 30px 30px;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.cityItemLayout:nth-child(1) {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    width: calc(40% - 12px);
+}
+
+.cityItemLayout:nth-child(1) .cityItem {
+    margin: 20px 0;
+}
+
+.cityItemLayout:nth-child(1)::before {
+    content: "Last City";
+}
+
+.cityItemLayout:nth-child(1)::after {
+    content: "Other Cities";
+}
+
+.likeBtn {
+    display: flex;
+    justify-content: flex-end;
 }

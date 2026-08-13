@@ -1,12 +1,11 @@
 import CityContainer from "../components/CityContainer/CityContainer"
 
-const MainPage = () => {
+const FavoritesPage = () => {
     return (
         <>
-            <CityContainer isFavorites={false} />
+            <CityContainer isFavorites={true} />
         </>
-
     )
 }
 
-export default MainPage
+export default FavoritesPage

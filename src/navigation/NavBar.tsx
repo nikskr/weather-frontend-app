@@ -8,6 +8,9 @@ const NavBar = () => {
             <NavLink className='link' to="/" end>
                 Main
             </NavLink>
+            <NavLink className='link' to="/favorites" end>
+                Favorites
+            </NavLink>
             <NavLink className='link' to="/about" end>
                 About
             </NavLink>
