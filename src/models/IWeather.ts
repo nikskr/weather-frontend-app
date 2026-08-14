@@ -16,7 +16,7 @@ export interface ICurrentWeather {
     wind_kph: number,
     wind_dir: string,
     humidity: number,
-    feels_like_c: number
+    feelslike_c: number
 }
 
 export interface ILocationCurrentWeather {

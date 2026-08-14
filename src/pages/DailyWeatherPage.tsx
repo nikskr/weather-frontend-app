@@ -1,6 +1,7 @@
 import { useParams } from "react-router"
 import { weatherAPI } from "../service/WeatherService"
 import DayForecastCard from "../components/DayForecastCard/DayForecastCard"
+import Loader from "../components/UI/Loader/Loader"
 
 const DailyWeatherPage = () => {
     const { cityName } = useParams()
@@ -8,7 +9,9 @@ const DailyWeatherPage = () => {
 
     if (isLoading) {
         return (
-            <h1>Forecast data is loading...</h1>
+            <div style={{minHeight: 'calc(100vh - 62px)', display: "flex", justifyContent: "center", alignContent: "center"}}>
+                <Loader />
+            </div>
         )
     }
 

@@ -1,16 +1,15 @@
 .container {
     min-height: 100vh;
     max-width: 1200px;
-    /* height: 100vh; */
     width: 100%;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     border: 1px solid black;
     background-color: lightskyblue;
+
 }
 
 .content {
-    height: 100%;
-    /* padding: 0 30px 10px; */
+    min-height: calc(100vh - 62px);
 }

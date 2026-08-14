@@ -12,7 +12,7 @@ const CityContainer = ({ isFavorites }: CityContainerProps) => {
     const cities: ICity[] = useAppSelector(state => state.citiesReducer.cities)
     const [maxFavorites, setMaxFavorites] = useState(3)
     const [maxAllCities, setMaxAllCities] = useState(10)
-
+    console.log(cities)
     function handleMaxFavoriteChange(e: React.ChangeEvent<HTMLSelectElement>) {
         setMaxFavorites(Number(e.target.value))
     }
@@ -55,13 +55,13 @@ const CityContainer = ({ isFavorites }: CityContainerProps) => {
                     {isFavorites ?
                         cities.filter(city => city.isFavorite).map((city, i) => {
                             if (i < maxFavorites) {
-                                return <CityCard key={city.id} city={city} />
+                                return <CityCard isFavoritesContainer={isFavorites} key={city.id} city={city} />
                             }
                         })
                         :
                         cities.map((city, i) => {
                             if (i < maxAllCities) {
-                                return <CityCard key={city.id} city={city} />
+                                return <CityCard isFavoritesContainer={isFavorites} key={city.id} city={city} />
                             }
                         })
                     }

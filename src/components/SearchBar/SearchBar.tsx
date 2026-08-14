@@ -4,6 +4,7 @@ import { weatherAPI } from '../../service/WeatherService'
 import { citiesSlice } from '../../store/reducers/CitiesSlice'
 import { useAppDispatch } from '../../hooks/redux'
 import { useNavigate } from 'react-router'
+import Loader from '../UI/Loader/Loader'
 
 const SearchBar = () => {
     const navigate = useNavigate()
@@ -39,6 +40,7 @@ const SearchBar = () => {
             <button className={classes.btn} onClick={handleSearchBtnClick} disabled={isLoading}>
                 {isLoading ? 'Searching...' : 'Search'}
             </button>
+            <div>{isLoading && <Loader/>}</div>
             <div>{error && 'Location not found'}</div>
         </form>
     )
