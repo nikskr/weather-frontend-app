@@ -22,10 +22,10 @@ const DailyWeatherPage = () => {
     }
     return (
         <div>
-            <h1 style={{margin: '10px 0px 30px', textAlign: 'center'}}>
+            <h1 style={{padding: '20px 30px', textAlign: 'center'}}>
                 Daily forecast for {dailyForecast.location.name}, {dailyForecast.location.country}
             </h1>
-            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'space-around', padding: '0px 20px' }}>
                 {dailyForecast.forecast.forecastday.map(day =>
                     <DayForecastCard key={day.date} date={day} />
                 )}

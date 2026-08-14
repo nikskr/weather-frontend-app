@@ -16,8 +16,10 @@ const DayForecastCard = ({ date }: DayForecastCardProps) => {
     return (
             <div onClick={() => navigate(date.date)} className={classes.card}>
                 <h1>{dayMonthDate}</h1>
-                <h3>Температура: {date.day.mintemp_c} - {date.day.maxtemp_c}</h3>
-                <h4>Макс. скорость ветра: {date.day.maxwind_kph}</h4>
+                <img src={date.day.condition.icon}></img>
+                <div>{date.day.condition.text}</div>
+                <h3>{date.day.mintemp_c} &deg;C - {date.day.maxtemp_c} &deg;C</h3>
+                <h4>{date.day.maxwind_kph} kph</h4>
             </div>
     )
 }

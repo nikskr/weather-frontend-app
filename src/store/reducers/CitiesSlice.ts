@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { ICity } from "../../models/ICommon";
-import { DEFAULT_CITIES } from "../../variables/consts";
+import { DEFAULT_CITIES } from "../../utils/consts";
 import { StorageService } from "../../service/StorageService";
 
 interface CitiesState {
@@ -11,14 +11,25 @@ const initialCityArr = () => {
     const favorites: string[] | undefined = StorageService.get('favorites')
 
     if (favorites && favorites.length > 0) {
-        const uniqueCities = DEFAULT_CITIES.filter(c => !favorites.includes(c))
-        const resultArr = [...favorites.map(city => ({
+        const uniqueCities = favorites.filter(c => !DEFAULT_CITIES.includes(c))
+
+        const resultArr = [...DEFAULT_CITIES.map(city => {
+            if (favorites.includes(city)) {
+                return {
+                    name: city,
+                    isFavorite: true
+                }
+            }
+            return {
+                name: city,
+                isFavorite: false
+            }
+        }),
+        ...uniqueCities.map(city => ({
             name: city,
             isFavorite: true
-        })), ...uniqueCities.map(city => ({
-            name: city,
-            isFavorite: false
         }))]
+
         return resultArr.map((city, i) => ({
             id: i,
             name: city.name,
@@ -35,11 +46,6 @@ const initialCityArr = () => {
 
 const initialState: CitiesState = {
     cities: initialCityArr()
-    // cities: DEFAULT_CITIES.map((city, i) => ({
-    //     id: i,
-    //     name: city,
-    //     isFavorite: false
-    // })),
 }
 
 export const citiesSlice = createSlice({
@@ -72,7 +78,6 @@ export const citiesSlice = createSlice({
                 }
             } else {
                 const filteredArr = storageFavorites?.filter(name => !(name === state.cities[targetIndex].name))
-                console.log(filteredArr)
                 StorageService.set('favorites', filteredArr)
             }
         }

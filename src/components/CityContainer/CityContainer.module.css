@@ -27,3 +27,42 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
 }
+
+.select {
+    padding: 5px 10px;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: lightskyblue;
+    box-shadow: 5px 5px 10px steelblue;
+}
+
+.select:hover {
+    box-shadow: 10px 10px 10px 5px steelblue;
+    cursor: pointer;
+}
+
+/* label {
+    margin-right: 5px;
+} */
+
+.pagesWrapper {
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px 20px;
+    margin: 0 auto;
+}
+
+.pageBtn {
+    padding: 5px;
+    background-color: white;
+}
+
+.pageBtn:hover {
+    cursor: pointer;
+}
+
+.pageCurrent {
+    border: 2px solid steelblue;
+    font-weight: bold;
+}
+

@@ -1,1 +1,0 @@
-export const DEFAULT_CITIES: string[] = import.meta.env.VITE_DEFAULT_CITIES ? import.meta.env.VITE_DEFAULT_CITIES.split(',') : []

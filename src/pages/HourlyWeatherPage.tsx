@@ -33,10 +33,10 @@ const HourlyWeatherPage = () => {
 
     return (
         <div>
-            <h1 style={{ margin: '10px 0px 30px', textAlign: 'center' }}>
+            <h1 style={{ padding: '20px 30px', textAlign: 'center' }}>
                 {`Hourly forecast for ${dailyForecast.location.name}, ${dailyForecast.location.country} for ${dayOfMonth}.${month}.${year}`}
             </h1>
-            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'space-around', padding: '0px 20px' }}>
                 {day.hour.map(hour =>
                     <HourForecastCard key={hour.time} hour={hour} />
                 )}

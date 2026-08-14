@@ -9,9 +9,11 @@ const HourForecastCard = ({hour}: HourForecastCardProps) => {
     return (
             <div className={classes.card}>
                 <h1>{hour.time.split(' ')[1]}</h1>
-                <h3>Температура: {hour.temp_c}</h3>
-                <h4>Cкорость ветра: {hour.wind_kph}</h4>
-                <h4>Влажность: {hour.humidity}</h4>
+                <img src={hour.condition.icon} />
+                <div>{hour.condition.text}</div>
+                <h3>{hour.temp_c} &deg;C</h3>
+                <h4>{hour.wind_kph} kph</h4>
+                <h4>{hour.humidity} %</h4>
             </div>
     )
 }
