@@ -1,10 +1,14 @@
 .cityItemLayout {
     width: 100%;
+    display: flex;
+    align-items: stretch;
 }
 
 .cityItem {
     width: 100%;
-    border: 2px solid black;
+    border: 4px solid transparent;
+    outline: 1px solid black; 
+    outline-offset: -4px; 
     border-radius: 10px;
     padding: 10px 30px 30px;
     cursor: pointer;
@@ -14,6 +18,7 @@
     align-items: center;
     gap: 10px;
     box-shadow: 5px 5px 10px steelblue;
+    transition: transform 0.3s ease
 }
 
 .cityItem:hover {
@@ -58,6 +63,8 @@
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px
 }
 
 .firstCityAddInfoItem {
@@ -65,6 +72,10 @@
     flex-direction: column;
     align-items: center;
     gap: 5px;
+}
+
+.cityItem h4 {
+    text-align: center;
 }
 
 .firstCityAddInfoItem div {

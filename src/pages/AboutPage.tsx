@@ -1,6 +1,6 @@
 const AboutPage = () => {
     return (
-        <div style={{display: 'flex', minHeight: 'calc(100vh - 62px)' }}>
+        <div style={{display: 'flex', minHeight: 'calc(100vh - 105px)'}}>
             <h1 style={{margin: 'auto'}}>
                 Site is created for weather forecasts by nikskr <br />
                 All rights are received © 2026

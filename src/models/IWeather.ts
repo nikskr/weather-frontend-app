@@ -30,6 +30,7 @@ export interface IForecastHourWeather {
     condition: ICondition,
     wind_kph: number,
     humidity: number
+    wind_dir: string
 }
 
 

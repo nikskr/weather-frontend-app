@@ -12,7 +12,7 @@ const HourForecastCard = ({hour}: HourForecastCardProps) => {
                 <img src={hour.condition.icon} />
                 <div>{hour.condition.text}</div>
                 <h3>{hour.temp_c} &deg;C</h3>
-                <h4>{hour.wind_kph} kph</h4>
+                <h4>{hour.wind_dir} - {hour.wind_kph} kph</h4>
                 <h4>{hour.humidity} %</h4>
             </div>
     )

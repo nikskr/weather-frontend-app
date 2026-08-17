@@ -5,15 +5,17 @@ import SearchBar from "../components/SearchBar/SearchBar";
 const NavBar = () => {
     return (
         <nav className="nav-content">
-            <NavLink className='link' to="/" end>
-                Main
-            </NavLink>
-            <NavLink className='link' to="/favorites" end>
-                Favorites
-            </NavLink>
-            <NavLink className='link' to="/about" end>
-                About
-            </NavLink>
+            <div className="link-row">
+                <NavLink className='link' to="/" end>
+                    Main
+                </NavLink>
+                <NavLink className='link' to="/favorites" end>
+                    Favorites
+                </NavLink>
+                <NavLink className='link' to="/about" end>
+                    About
+                </NavLink>
+            </div>
             <SearchBar />
         </nav>
     )

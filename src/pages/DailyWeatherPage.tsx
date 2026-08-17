@@ -9,7 +9,7 @@ const DailyWeatherPage = () => {
 
     if (isLoading) {
         return (
-            <div style={{minHeight: 'calc(100vh - 62px)', display: "flex", justifyContent: "center", alignContent: "center"}}>
+            <div style={{minHeight: 'calc(100vh - 105px)', display: "flex", justifyContent: "center", alignContent: "center"}}>
                 <Loader />
             </div>
         )
@@ -25,7 +25,7 @@ const DailyWeatherPage = () => {
             <h1 style={{padding: '20px 30px', textAlign: 'center'}}>
                 Daily forecast for {dailyForecast.location.name}, {dailyForecast.location.country}
             </h1>
-            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'space-around', padding: '0px 20px' }}>
+            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'flex-start', padding: '0 20px', marginBottom: '50px'}}>
                 {dailyForecast.forecast.forecastday.map(day =>
                     <DayForecastCard key={day.date} date={day} />
                 )}

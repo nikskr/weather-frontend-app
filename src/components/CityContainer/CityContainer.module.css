@@ -1,5 +1,5 @@
 .container {
-    min-height: calc(100vh - 62px);
+    min-height: calc(100vh - 105px);
     display: flex;
     flex-direction: column;
 }
@@ -50,8 +50,11 @@
 }
 
 .pageBtn {
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 5px;
     background-color: steelblue;
     color: white;
@@ -63,6 +66,7 @@
     color: steelblue;
     background-color: white;
     box-shadow: 5px 5px 5px steelblue;
+    transform: translateX(-2px) translateY(2px);
 }
 
 .pageCurrent {
@@ -71,8 +75,10 @@
     font-weight: bold;
     color: steelblue;
     background-color: white;
+    transform: translateY(-2px);
 }
 
 .pageCurrent:hover {
     box-shadow: none;
+    transform: none;
 }

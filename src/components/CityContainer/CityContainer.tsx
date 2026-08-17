@@ -4,6 +4,7 @@ import type { ICity } from "../../models/ICommon"
 import CityCard from "../CityCard/CityCard"
 import classes from './CityContainer.module.css'
 import { getPages, getPagesArray } from "../../utils/pages"
+import { StorageService } from "../../service/StorageService"
 
 interface CityContainerProps {
     isFavorites: boolean
@@ -14,9 +15,11 @@ const CityContainer = ({ isFavorites }: CityContainerProps) => {
 
     const cities = isFavorites ? allCities.filter(c => c.isFavorite) : allCities
 
+    const limitFromLocalStorage = Number(isFavorites ? StorageService.get('favoritesLimit') : StorageService.get('citiesLimit')) 
+
     const totalCount = cities.length
     const [page, setPage] = useState(1)
-    const [limit, setLimit] = useState(isFavorites ? 3 : 10)
+    const [limit, setLimit] = useState(limitFromLocalStorage ? limitFromLocalStorage : 5)
 
     const limitArray = isFavorites ? [1, 2, 3, 4, 5] : [3, 5, 10, 15, 25]
 
@@ -35,6 +38,11 @@ const CityContainer = ({ isFavorites }: CityContainerProps) => {
     function handleLimitChange(e: React.ChangeEvent<HTMLSelectElement>) {
         setLimit(Number(e.target.value))
         setPage(1)
+        if (isFavorites) {
+            StorageService.set('favoritesLimit', e.target.value)
+        } else {
+            StorageService.set('citiesLimit', e.target.value)
+        } 
     }
 
     if (isFavorites && cities.findIndex(city => city.isFavorite === true) === -1) {

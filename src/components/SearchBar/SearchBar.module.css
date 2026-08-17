@@ -1,9 +1,10 @@
 .form {
     display: flex;
     flex-grow: 1;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    gap: 30px
+    row-gap: 10px;
+    padding: 0px 30px;
 }
 
 .input,
@@ -14,7 +15,12 @@
     border-radius: 20px;
 }
 
+.btn {
+    margin-left: 10px
+}
+
 .input {
     max-width: 300px;
+    width: 100%;
     flex-grow: 1;
 }

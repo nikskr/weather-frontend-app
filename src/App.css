@@ -7,9 +7,9 @@
     margin: 0 auto;
     border: 1px solid black;
     background-color: lightskyblue;
-
 }
 
 .content {
-    min-height: calc(100vh - 62px);
+    min-height: calc(100vh - 105px);
+    padding: 0px 30px;
 }

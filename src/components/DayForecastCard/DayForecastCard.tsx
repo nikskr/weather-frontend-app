@@ -18,7 +18,7 @@ const DayForecastCard = ({ date }: DayForecastCardProps) => {
                 <h1>{dayMonthDate}</h1>
                 <img src={date.day.condition.icon}></img>
                 <div>{date.day.condition.text}</div>
-                <h3>{date.day.mintemp_c} &deg;C - {date.day.maxtemp_c} &deg;C</h3>
+                <h3>{date.day.mintemp_c} &deg;C <span>...</span> {date.day.maxtemp_c} &deg;C</h3>
                 <h4>{date.day.maxwind_kph} kph</h4>
             </div>
     )
