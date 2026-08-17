@@ -25,6 +25,7 @@ const SearchBar = () => {
 
         try {
             const data = await triggerFetchCurrentWeatherByLocation(formattedLocation).unwrap()
+            
             dispatch(bringToTop(data.location))
             setSearchText('')
             navigate('/')

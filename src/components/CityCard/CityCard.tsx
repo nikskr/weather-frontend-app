@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router"
-import { useAppDispatch, useAppSelector } from "../../hooks/redux"
+import { useAppDispatch } from "../../hooks/redux"
 import type { ICity } from "../../models/ICommon"
 import { weatherAPI } from "../../service/WeatherService"
 import { citiesSlice } from "../../store/reducers/CitiesSlice"
@@ -9,29 +9,24 @@ import Loader from "../UI/Loader/Loader"
 
 interface CityCardProps {
     city: ICity,
-    isFavoritesContainer: boolean
+    pageCities: ICity[],
+    changePage: (pageNumber: number) => void;
 }
 
-const CityCard = ({ city, isFavoritesContainer }: CityCardProps) => {
+const CityCard = ({ city, pageCities, changePage }: CityCardProps) => {
     const { bringToTop, toggleFavorite } = citiesSlice.actions
-    const allCities = useAppSelector(state => state.citiesReducer.cities)
-    const requestCityName = allCities.find(c => c.name.toLowerCase() === city.name.toLowerCase())?.name || city.name
+    const requestCityName = pageCities.find(c => c.name.toLowerCase() === city.name.toLowerCase())?.name || city.name
 
     const { data: weatherData, isLoading, error } = weatherAPI.useFetchCurrentWeatherByLocationQuery(requestCityName)
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
-    const firstCity = isFavoritesContainer ? allCities.find(c => c.isFavorite) : allCities[0]
+    const firstCity = pageCities[0]
 
     if (!firstCity) {
         return (
             <h1>First city not found. Error</h1>
         )
-    }
-
-    function handleFavoriteBtnClick(e: React.MouseEvent, city: ICity) {
-        e.stopPropagation()
-        dispatch(toggleFavorite(city))
     }
 
     if (isLoading) {
@@ -52,8 +47,17 @@ const CityCard = ({ city, isFavoritesContainer }: CityCardProps) => {
 
     function handleOnCardClick() {
         dispatch(bringToTop(city))
-        if (city.id === firstCity?.id)
+
+        if (city.id === firstCity?.id) {
             navigate(`/${weatherData?.location.name}`, { replace: true })
+        } else {
+            changePage(1)
+        }
+    }
+
+    function handleFavoriteBtnClick(e: React.MouseEvent, city: ICity) {
+        e.stopPropagation()
+        dispatch(toggleFavorite(city))
     }
 
     return (
