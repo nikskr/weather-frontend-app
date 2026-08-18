@@ -9,7 +9,7 @@ const store = setupStore()
 
 createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename="/weather-frontend-app">
             <App />
         </BrowserRouter>
     </Provider>
