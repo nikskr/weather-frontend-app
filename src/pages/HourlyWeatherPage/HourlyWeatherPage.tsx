@@ -1,7 +1,8 @@
 import { useParams } from "react-router"
-import { weatherAPI } from "../service/WeatherService"
-import HourForecastCard from "../components/HourForecastCard/HourForecastCard"
-import Loader from "../components/UI/Loader/Loader"
+import { weatherAPI } from "../../service/WeatherService"
+import HourForecastCard from "../../components/HourForecastCard/HourForecastCard"
+import Loader from "../../components/UI/Loader/Loader"
+import classes from './HourlyWeatherPage.module.css'
 
 const HourlyWeatherPage = () => {
     const { cityName, date } = useParams()
@@ -9,7 +10,7 @@ const HourlyWeatherPage = () => {
 
     if (isLoading) {
         return (
-            <div style={{ minHeight: 'calc(100vh - 105px)', display: "flex", justifyContent: "center", alignContent: "center" }}>
+            <div className={classes.loader}>
                 <Loader />
             </div>
         )
@@ -23,7 +24,7 @@ const HourlyWeatherPage = () => {
 
     if (!date) {
         return (
-            <h1 style={{ margin: '10px 0px 30px', textAlign: 'center' }}>
+            <h1 className={classes.dateError}>
                 Date is not correct
             </h1>
         )
@@ -33,10 +34,10 @@ const HourlyWeatherPage = () => {
 
     return (
         <div>
-            <h1 style={{ padding: '20px 30px', textAlign: 'center' }}>
+            <h1 className={classes.header}>
                 {`Hourly forecast for ${dailyForecast.location.name}, ${dailyForecast.location.country} for ${dayOfMonth}.${month}.${year}`}
             </h1>
-            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'space-around', padding: '0px 20px', marginBottom: '50px' }}>
+            <div className={classes.listWrapper}>
                 {day.hour.map(hour =>
                     <HourForecastCard key={hour.time} hour={hour} />
                 )}

@@ -1,7 +1,8 @@
 import { useParams } from "react-router"
-import { weatherAPI } from "../service/WeatherService"
-import DayForecastCard from "../components/DayForecastCard/DayForecastCard"
-import Loader from "../components/UI/Loader/Loader"
+import { weatherAPI } from "../../service/WeatherService"
+import DayForecastCard from "../../components/DayForecastCard/DayForecastCard"
+import Loader from "../../components/UI/Loader/Loader"
+import classes from './DailyWeatherPage.module.css'
 
 const DailyWeatherPage = () => {
     const { cityName } = useParams()
@@ -9,7 +10,7 @@ const DailyWeatherPage = () => {
 
     if (isLoading) {
         return (
-            <div style={{minHeight: 'calc(100vh - 105px)', display: "flex", justifyContent: "center", alignContent: "center"}}>
+            <div className={classes.loader}>
                 <Loader />
             </div>
         )
@@ -22,10 +23,10 @@ const DailyWeatherPage = () => {
     }
     return (
         <div>
-            <h1 style={{padding: '20px 30px', textAlign: 'center'}}>
+            <h1 className={classes.header}>
                 Daily forecast for {dailyForecast.location.name}, {dailyForecast.location.country}
             </h1>
-            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'flex-start', padding: '0 20px', marginBottom: '50px'}}>
+            <div className={classes.listWrapper}>
                 {dailyForecast.forecast.forecastday.map(day =>
                     <DayForecastCard key={day.date} date={day} />
                 )}

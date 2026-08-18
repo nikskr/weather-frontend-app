@@ -1,0 +1,25 @@
+.loader {
+	min-height: calc(100vh - 105px);
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+.dateError {
+    margin: 10px 0px 30px; 
+    text-align: center;
+}
+
+.header {
+	padding: 20px 30px;
+	text-align: center;
+}
+
+.listWrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	place-items: center;
+	gap: 20px;
+	padding: 0 20px;
+	margin-bottom: 50px;
+}
