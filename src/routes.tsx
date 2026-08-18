@@ -1,5 +1,5 @@
 import MainPage from "./pages/MainPage"
-import AboutPage from "./pages/AboutPage"
+import AboutPage from "./pages/AboutPage/AboutPage"
 import DailyWeatherPage from "./pages/DailyWeatherPage/DailyWeatherPage"
 import HourlyWeatherPage from "./pages/HourlyWeatherPage/HourlyWeatherPage"
 import { ABOUT_ROUTE, DAY_FORECAST_ROUTE, FAVORITES_ROUTE, HOUR_FORECAST_ROUTE } from "./utils/consts"
