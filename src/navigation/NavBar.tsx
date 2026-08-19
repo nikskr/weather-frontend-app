@@ -1,18 +1,18 @@
 import { NavLink } from "react-router";
-import './index.css'
 import SearchBar from "../components/SearchBar/SearchBar";
+import classes from './NavBar.module.css'
 
 const NavBar = () => {
     return (
-        <nav className="nav-content">
-            <div className="link-row">
-                <NavLink className='link' to="/" end>
+        <nav className={classes.navContent}>
+            <div className={classes.linkRow}>
+                <NavLink className={classes.link} to="/" end>
                     Main
                 </NavLink>
-                <NavLink className='link' to="/favorites" end>
+                <NavLink className={classes.link} to="/favorites" end>
                     Favorites
                 </NavLink>
-                <NavLink className='link' to="/about" end>
+                <NavLink className={classes.link} to="/about" end>
                     About
                 </NavLink>
             </div>

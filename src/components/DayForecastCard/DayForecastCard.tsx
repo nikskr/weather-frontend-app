@@ -12,7 +12,6 @@ const DayForecastCard = ({ date }: DayForecastCardProps) => {
     const [, month, day] = date.date.split('-')
     const dayMonthDate = `${day}.${month}`
 
-
     return (
             <div onClick={() => navigate(date.date)} className={classes.card}>
                 <h1>{dayMonthDate}</h1>
