@@ -42,7 +42,6 @@ const CityContainer = ({ isFavorites }: CityContainerProps) => {
     }
 
     const handleListCardClick = () => {
-        console.log(1)
         listRef?.current?.scrollIntoView({
             behavior: 'smooth',
             block: 'start',

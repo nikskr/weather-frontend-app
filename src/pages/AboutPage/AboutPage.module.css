@@ -14,12 +14,27 @@
     margin-bottom: 20px;
 }
 
+.imageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    max-width: 1000px;
+}
+
 .linksContainer {
     margin-bottom: 30px;
 }
 
 .linksList {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     justify-self: center;
+}
+
+.linkIcon:hover {
+    filter: invert(100%) brightness(200%);
+    transform: scale(1.5);
 }

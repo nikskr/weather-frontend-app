@@ -15,14 +15,13 @@ const AboutPage = () => {
                 </p>
             </div>
             <div className={classes.imageContainer}>
-                <img src={`${import.meta.env.BASE_URL}/images/about-image.png`} alt="Weather Image" width={'100%'} height={'100%'}/>
+                <img className={classes.image} src={`${import.meta.env.BASE_URL}/images/about-image.png`} alt="Weather Image" width={'100%'} height={'100%'}/>
             </div>
             <div className={classes.linksContainer}>
                 <ul className={classes.linksList}>
                     {CONTACTLINKS.map(con => 
-                        <li key={con.icon}><a href={con.link}><img src={`${import.meta.env.BASE_URL}${con.icon}`} alt={con.name} width={20} height={20}/></a></li>
+                        <li className={classes.linkIcon} key={con.icon}><a href={con.link}><img src={`${import.meta.env.BASE_URL}${con.icon}`} alt={con.name} width={30} height={30}/></a></li>
                     )}
-
                 </ul>
             </div>
         </div>
