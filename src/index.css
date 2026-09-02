@@ -3,8 +3,10 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    list-style-type: none;
 }
 
 body {
-    background-color: lightblue ;
+    background-color: lightblue;
+    font-family: "Google Sans", sans-serif;
 }

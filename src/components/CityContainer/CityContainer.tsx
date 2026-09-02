@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import CityCard from "../CityCard/CityCard"
 import classes from './CityContainer.module.css'
 import { StorageService } from "../../service/StorageService"
@@ -15,11 +15,13 @@ const CityContainer = ({ isFavorites }: CityContainerProps) => {
     const [page, setPage] = useState(1)
     const [limit, setLimit] = useState(limitFromLocalStorage ? limitFromLocalStorage : 5)
 
-    const {pageCities, limitArray, pagesArray} = usePageCities(isFavorites, page, limit)
+    const { pageCities, limitArray, pagesArray } = usePageCities(isFavorites, page, limit)
 
     const changePage = (page: number) => {
         setPage(page)
     }
+
+    const listRef = useRef<HTMLDivElement>(null);
 
     function handleLimitChange(e: React.ChangeEvent<HTMLSelectElement>) {
         setLimit(Number(e.target.value))
@@ -39,9 +41,17 @@ const CityContainer = ({ isFavorites }: CityContainerProps) => {
         )
     }
 
+    const handleListCardClick = () => {
+        console.log(1)
+        listRef?.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+    };
+
     return (
         <>
-            <div className={classes.container}>
+            <div className={classes.container} ref={listRef}>
                 <div className={classes.titleWrapper}>
                     <h2>{isFavorites ? 'Favorites:' : 'All cities:'}</h2>
                     <div>
@@ -56,7 +66,7 @@ const CityContainer = ({ isFavorites }: CityContainerProps) => {
                 <div className={classes.list}>
                     {pageCities.map((city, i) => {
                         if (i < limit) {
-                            return <CityCard key={city.id} city={city} pageCities={pageCities} changePage={changePage} />
+                            return <CityCard scrollHandler={handleListCardClick} key={city.id} city={city} pageCities={pageCities} changePage={changePage} />
                         }
                     })}
                 </div>

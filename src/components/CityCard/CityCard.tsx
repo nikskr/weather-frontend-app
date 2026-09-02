@@ -11,9 +11,10 @@ interface CityCardProps {
     city: ICity,
     pageCities: ICity[],
     changePage: (pageNumber: number) => void;
+    scrollHandler: () => void
 }
 
-const CityCard = ({ city, pageCities, changePage }: CityCardProps) => {
+const CityCard = ({ city, pageCities, changePage, scrollHandler }: CityCardProps) => {
     const { bringToTop, toggleFavorite } = citiesSlice.actions
     const requestCityName = pageCities.find(c => c.name.toLowerCase() === city.name.toLowerCase())?.name || city.name
 
@@ -62,7 +63,7 @@ const CityCard = ({ city, pageCities, changePage }: CityCardProps) => {
 
     return (
         <div className={classes.cityItemLayout}>
-            <div onClick={handleOnCardClick} className={`${classes.cityItem} ${city.name === firstCity.name ? classes.first : ''}`}>
+            <div onClick={() => { scrollHandler(); handleOnCardClick(); }} className={`${classes.cityItem} ${city.name === firstCity.name ? classes.first : ''}`}>
                 <div className={classes.likeBtn}>
                     <LikeButton handleLikeClick={e => handleFavoriteBtnClick(e, city)} isLiked={Boolean(city.isFavorite)} />
                 </div>

@@ -1,8 +1,25 @@
 .wrapper {
     display: flex;
+    flex-direction: column;
     min-height: calc(100vh - 105px);
+    justify-content: space-between;
+    gap: 20px;
 }
 
-.text {
-    margin: auto
+.header {
+    margin-top: 20px;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.linksContainer {
+    margin-bottom: 30px;
+}
+
+.linksList {
+    display: flex;
+    gap: 20px;
+    justify-self: center;
 }
