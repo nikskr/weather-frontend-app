@@ -6,10 +6,7 @@ import spaRedirect from 'vite-plugin-spa-redirect'
 export default defineConfig({
   plugins: [
     react(),
-     {
-      ...spaRedirect(),
-      enforce: 'post' 
-    }
+    spaRedirect()
   ],
   base: '/weather-frontend-app/',
 })
