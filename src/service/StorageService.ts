@@ -15,11 +15,11 @@ export const StorageService = {
             console.error('Storage Service - Value setting Error: ', error)
         }
     },
-    remove(key: string): void {
-        try {
-            localStorage.removeItem(key)
-        } catch (error) {
-            console.error('Storage Service - Key removing Error: ', error)
-        }
-    }
+    // remove(key: string): void {
+    //     try {
+    //         localStorage.removeItem(key)
+    //     } catch (error) {
+    //         console.error('Storage Service - Key removing Error: ', error)
+    //     }
+    // }
 }
