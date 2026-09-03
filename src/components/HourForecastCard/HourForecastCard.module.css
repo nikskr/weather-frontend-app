@@ -32,8 +32,25 @@
     text-align: center;
 }
 
-.card:hover div,
-.card:hover img,
-.card:hover h4 {
+#active {
+    background-color: #FFF;
+    border: none;
+    outline: none;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+#active div,
+#active img,
+#active h4 {
     display: block;
+}
+
+#active:hover {
+    cursor: pointer;
 }

@@ -115,7 +115,7 @@ export default function SynchronizedLineChart({ data, type }: { data: DataType[]
                     {renderCommon('Wind speed')}
 
                     <Typed.Line type="monotone" dataKey={(v) => {
-
+                        
                         if (type === 'date') {
                             return ('day' in v ? v.day.maxwind_kph : 0)
                         }
@@ -162,11 +162,6 @@ export default function SynchronizedLineChart({ data, type }: { data: DataType[]
                     />
                 </Typed.AreaChart>
             </div>
-
-
-
-
-
         </div>
     );
 }

@@ -4,10 +4,14 @@ import HourForecastCard from "../../components/HourForecastCard/HourForecastCard
 import Loader from "../../components/UI/Loader/Loader"
 import classes from './HourlyWeatherPage.module.css'
 import SynchronizedLineChart from "../../components/charts/SynchronizedLineChart"
+import { useState } from "react"
+import type { IForecastHourWeather } from "../../models/IWeather"
 
 const HourlyWeatherPage = () => {
     const { cityName, date } = useParams()
     const { data: dailyForecast, isLoading, error } = weatherAPI.useFetchForecastByLocationQuery(cityName as string)
+
+    const [activeCard, setActiveCard] = useState<IForecastHourWeather | null>(null)
 
     if (isLoading) {
         return (
@@ -30,8 +34,22 @@ const HourlyWeatherPage = () => {
             </h1>
         )
     }
+
     const [day] = dailyForecast.forecast.forecastday.filter(day => day.date === date)
     const [year, month, dayOfMonth] = date.split('-')
+
+    function handleCardClick(e: React.MouseEvent, time: string | null) {
+        if (activeCard) {
+            setActiveCard(null);
+            return;
+        }
+
+        const card = day.hour.find((h) => h.time === time);
+
+        if (card !== undefined) {
+            setActiveCard(card)
+        }
+    }
 
     return (
         <div>
@@ -40,14 +58,19 @@ const HourlyWeatherPage = () => {
             </h1>
             <div className={classes.listWrapper}>
                 {day.hour.map(hour =>
-                    <HourForecastCard key={hour.time} hour={hour} />
+                    <HourForecastCard key={hour.time} hour={hour} onClick={handleCardClick} />
                 )}
             </div>
+            {activeCard &&
+                <div className={classes.activeCardWrapper} onClick={(e) => handleCardClick(e, null)}>
+                    <HourForecastCard hour={activeCard} active={true} onClick={handleCardClick} />
+                </div>
+            }
             <div>
                 <h2 className={classes.sectionTitle}>
                     Weather monitoring
                 </h2>
-                <SynchronizedLineChart data={day.hour} type='hour'/>
+                <SynchronizedLineChart data={day.hour} type='hour' />
             </div>
         </div>
     )

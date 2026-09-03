@@ -2,18 +2,21 @@ import type { IForecastHourWeather } from "../../models/IWeather"
 import classes from './HourForecastCard.module.css'
 
 interface HourForecastCardProps {
-    hour: IForecastHourWeather
+    hour: IForecastHourWeather,
+    onClick: (e: React.MouseEvent, time: string) => void,
+    active?: boolean
 }
 
-const HourForecastCard = ({hour}: HourForecastCardProps) => {
+const HourForecastCard = ({hour, onClick, active}: HourForecastCardProps) => {
     return (
-            <div className={classes.card}>
+            <div id={active ? classes.active : ''} className={classes.card} onClick={(e) => onClick(e, hour.time)}>
+            {/* <div className={active ? `${classes.card} ${classes.active}` : classes.card} onClick={(e) => onClick(e, hour.time)}> */}
                 <h1>{hour.time.split(' ')[1]}</h1>
-                <img src={hour.condition.icon} />
-                <div>{hour.condition.text}</div>
+                <img className={active ? classes.active : ''} src={hour.condition.icon} />
+                <div className={active ? classes.active : ''}>{hour.condition.text}</div>
                 <h3>{hour.temp_c} &deg;C</h3>
-                <h4>{hour.wind_dir} - {hour.wind_kph} kph</h4>
-                <h4>{hour.humidity} %</h4>
+                <h4 className={active ? classes.active : ''}>{hour.wind_dir} - {hour.wind_kph} kph</h4>
+                <h4 className={active ? classes.active : ''}>{hour.humidity} %</h4>
             </div>
     )
 }
