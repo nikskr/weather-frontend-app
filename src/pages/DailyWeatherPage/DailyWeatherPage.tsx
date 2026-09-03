@@ -3,6 +3,7 @@ import { weatherAPI } from "../../service/WeatherService"
 import DayForecastCard from "../../components/DayForecastCard/DayForecastCard"
 import Loader from "../../components/UI/Loader/Loader"
 import classes from './DailyWeatherPage.module.css'
+import SynchronizedLineChart from "../../components/charts/SynchronizedLineChart"
 
 const DailyWeatherPage = () => {
     const { cityName } = useParams()
@@ -30,6 +31,12 @@ const DailyWeatherPage = () => {
                 {dailyForecast.forecast.forecastday.map(day =>
                     <DayForecastCard key={day.date} date={day} />
                 )}
+            </div>
+            <div>
+                <h2 className={classes.sectionTitle}>
+                    Weather monitoring
+                </h2>
+                <SynchronizedLineChart data={dailyForecast.forecast.forecastday} type='date'/>
             </div>
         </div>
     )

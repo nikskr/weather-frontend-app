@@ -3,6 +3,7 @@ import { weatherAPI } from "../../service/WeatherService"
 import HourForecastCard from "../../components/HourForecastCard/HourForecastCard"
 import Loader from "../../components/UI/Loader/Loader"
 import classes from './HourlyWeatherPage.module.css'
+import SynchronizedLineChart from "../../components/charts/SynchronizedLineChart"
 
 const HourlyWeatherPage = () => {
     const { cityName, date } = useParams()
@@ -41,6 +42,12 @@ const HourlyWeatherPage = () => {
                 {day.hour.map(hour =>
                     <HourForecastCard key={hour.time} hour={hour} />
                 )}
+            </div>
+            <div>
+                <h2 className={classes.sectionTitle}>
+                    Weather monitoring
+                </h2>
+                <SynchronizedLineChart data={day.hour} type='hour'/>
             </div>
         </div>
     )
