@@ -3,13 +3,13 @@ import classes from './HourForecastCard.module.css'
 
 interface HourForecastCardProps {
     hour: IForecastHourWeather,
-    onClick: (e: React.MouseEvent, time: string) => void,
+    onClick: ( time: string) => void,
     active?: boolean
 }
 
 const HourForecastCard = ({hour, onClick, active}: HourForecastCardProps) => {
     return (
-            <div id={active ? classes.active : ''} className={classes.card} onClick={(e) => onClick(e, hour.time)}>
+            <div id={active ? classes.active : ''} className={classes.card} onClick={() => onClick(hour.time)}>
             {/* <div className={active ? `${classes.card} ${classes.active}` : classes.card} onClick={(e) => onClick(e, hour.time)}> */}
                 <h1>{hour.time.split(' ')[1]}</h1>
                 <img className={active ? classes.active : ''} src={hour.condition.icon} />

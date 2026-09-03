@@ -38,7 +38,7 @@ const HourlyWeatherPage = () => {
     const [day] = dailyForecast.forecast.forecastday.filter(day => day.date === date)
     const [year, month, dayOfMonth] = date.split('-')
 
-    function handleCardClick(e: React.MouseEvent, time: string | null) {
+    function handleCardClick( time: string | null) {
         if (activeCard) {
             setActiveCard(null);
             return;
@@ -62,7 +62,7 @@ const HourlyWeatherPage = () => {
                 )}
             </div>
             {activeCard &&
-                <div className={classes.activeCardWrapper} onClick={(e) => handleCardClick(e, null)}>
+                <div className={classes.activeCardWrapper} onClick={() => handleCardClick(null)}>
                     <HourForecastCard hour={activeCard} active={true} onClick={handleCardClick} />
                 </div>
             }
