@@ -24,7 +24,8 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 	place-items: center;
-	gap: 20px;
+	column-gap: 40px;
+	row-gap: 20px;
 	padding: 0 20px;
 	margin-bottom: 50px;
 }

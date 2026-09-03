@@ -15,7 +15,7 @@ const AboutPage = () => {
                 </p>
             </div>
             <div className={classes.imageContainer}>
-                <img className={classes.image} src={`${import.meta.env.BASE_URL}/images/about-image.png`} alt="Weather Image" width={'100%'} height={'100%'}/>
+                <img className={classes.image} src={`${import.meta.env.BASE_URL}images/about-image.png`} alt="Weather Image" width={'100%'} height={'100%'}/>
             </div>
             <div className={classes.linksContainer}>
                 <ul className={classes.linksList}>
