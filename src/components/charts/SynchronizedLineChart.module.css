@@ -10,9 +10,11 @@
 .lineChartItem {
     max-width: 500px;
     width: 100%;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
     flex-grow: 1;
+    background-color: white;
 }
