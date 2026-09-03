@@ -7,7 +7,7 @@ type DataType = IForecastDateWeather | IForecastHourWeather
 
 const Typed = createHorizontalChart<DataType, string, number>()({ Area, XAxis, YAxis, Tooltip, Line });
 
-const renderCommon = (type: string) => {
+const renderCommonWrapper = (type: string) => {
     return (metricName: string) => (
         <>
             <CartesianGrid />
@@ -62,11 +62,13 @@ const renderCommon = (type: string) => {
 }
 
 export default function SynchronizedLineChart({ data, type }: { data: DataType[], type: string }) {
+    const renderCommon = renderCommonWrapper(type)
     return (
         <div className={classes.lineChartContainer}>
             <div className={classes.lineChartItem}>
                 <h3>Temperature</h3>
                 <Typed.LineChart
+                    className={classes.chartBlock}
                     style={{ width: '100%', maxWidth: '700px', maxHeight: '30vh', aspectRatio: 1.618 }}
                     responsive
                     data={data}
@@ -78,7 +80,7 @@ export default function SynchronizedLineChart({ data, type }: { data: DataType[]
                         bottom: 20,
                     }}
                 >
-                    {renderCommon(type)('Temperature')}
+                    {renderCommon('Temperature')}
                     <Typed.Line type="monotone" dataKey={(v) => {
 
                         if (type === 'date') {
@@ -98,6 +100,7 @@ export default function SynchronizedLineChart({ data, type }: { data: DataType[]
             <div className={classes.lineChartItem}>
                 <h3>Wind speed</h3>
                 <Typed.LineChart
+                    className={classes.chartBlock}
                     style={{ width: '100%', maxWidth: '700px', maxHeight: '30vh', aspectRatio: 1.618 }}
                     responsive
                     data={data}
@@ -109,7 +112,7 @@ export default function SynchronizedLineChart({ data, type }: { data: DataType[]
                         bottom: 20,
                     }}
                 >
-                    {renderCommon(type)('Wind speed')}
+                    {renderCommon('Wind speed')}
 
                     <Typed.Line type="monotone" dataKey={(v) => {
 
@@ -131,6 +134,7 @@ export default function SynchronizedLineChart({ data, type }: { data: DataType[]
             <div className={classes.lineChartItem}>
                 <h3>Humidity</h3>
                 <Typed.AreaChart
+                    className={classes.chartBlock}
                     style={{ width: '100%', maxWidth: '700px', maxHeight: '30vh', aspectRatio: 1.618 }}
                     responsive
                     data={data}
@@ -142,7 +146,7 @@ export default function SynchronizedLineChart({ data, type }: { data: DataType[]
                         bottom: 20,
                     }}
                 >
-                    {renderCommon(type)('Humidity')}
+                    {renderCommon('Humidity')}
 
                     <Typed.Area type="monotone" dataKey={(v) => {
                         if (type === 'date') {

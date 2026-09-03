@@ -18,3 +18,7 @@
     flex-grow: 1;
     background-color: white;
 }
+
+.chartBlock {
+    min-height: 200px;
+}
