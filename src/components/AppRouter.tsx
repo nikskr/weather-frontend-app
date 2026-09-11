@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router"
 import { routes } from "../routes"
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage"
 
 const AppRouter = () => {
     return (
@@ -8,7 +7,6 @@ const AppRouter = () => {
             {routes.map(({path, element}) => 
                 <Route key={path} path={path} element={element} />
             )}
-            <Route path='*' element={<NotFoundPage />} />    
         </Routes>
     )
 }
