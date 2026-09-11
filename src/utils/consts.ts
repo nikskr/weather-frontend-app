@@ -1,6 +1,5 @@
 export const FAVORITES_ROUTE = '/favorites'
 export const ABOUT_ROUTE = '/about'
-export const NOT_FOUND_ROUTE = '/not-found'
 export const DAY_FORECAST_ROUTE = '/:cityName'
 export const HOUR_FORECAST_ROUTE = '/:cityName/:date'
 
