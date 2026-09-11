@@ -2,8 +2,9 @@ import MainPage from "./pages/MainPage"
 import AboutPage from "./pages/AboutPage/AboutPage"
 import DailyWeatherPage from "./pages/DailyWeatherPage/DailyWeatherPage"
 import HourlyWeatherPage from "./pages/HourlyWeatherPage/HourlyWeatherPage"
-import { ABOUT_ROUTE, DAY_FORECAST_ROUTE, FAVORITES_ROUTE, HOUR_FORECAST_ROUTE } from "./utils/consts"
+import { ABOUT_ROUTE, DAY_FORECAST_ROUTE, FAVORITES_ROUTE, HOUR_FORECAST_ROUTE, NOT_FOUND_ROUTE } from "./utils/consts"
 import FavoritesPage from "./pages/FavoritesPage"
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage"
 
 export const routes = [
     {
@@ -15,15 +16,19 @@ export const routes = [
         element: <FavoritesPage />
     },
     {
+        path: ABOUT_ROUTE,
+        element: <AboutPage />
+    },
+    {
+        path: NOT_FOUND_ROUTE,
+        element: <NotFoundPage />
+    },
+    {
         path: DAY_FORECAST_ROUTE,
         element: <DailyWeatherPage />
     },
     {
         path: HOUR_FORECAST_ROUTE,
         element: <HourlyWeatherPage />
-    },
-    {
-        path: ABOUT_ROUTE,
-        element: <AboutPage />
     }
 ]
