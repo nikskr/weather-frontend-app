@@ -33,7 +33,6 @@ export interface IForecastHourWeather {
     wind_dir: string
 }
 
-
 export interface IForecastDayWeather {
     maxtemp_c: number,
     mintemp_c: number,
