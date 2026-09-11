@@ -6,6 +6,7 @@ import { citiesSlice } from "../../store/reducers/CitiesSlice"
 import classes from './CityCard.module.css'
 import LikeButton from "../UI/LikeButton/LikeButton"
 import Loader from "../UI/Loader/Loader"
+import { handleLocalStorageFavorites } from "../../utils/favorites"
 
 interface CityCardProps {
     city: ICity,
@@ -59,6 +60,7 @@ const CityCard = ({ city, pageCities, changePage, scrollHandler }: CityCardProps
     function handleFavoriteBtnClick(e: React.MouseEvent, city: ICity) {
         e.stopPropagation()
         dispatch(toggleFavorite(city))
+        handleLocalStorageFavorites(city)
     }
 
     return (

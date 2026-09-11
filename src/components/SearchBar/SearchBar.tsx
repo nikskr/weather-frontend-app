@@ -29,7 +29,7 @@ const SearchBar = () => {
             setSearchText('')
             navigate('/')
         } catch (error) {
-            console.log('Failed to fetch weather: ', error)
+            console.error('Failed to fetch weather: ', error)
         }
 
     }

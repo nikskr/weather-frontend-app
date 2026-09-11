@@ -3,7 +3,7 @@ import type { ICity } from "../../models/ICommon";
 import { DEFAULT_CITIES } from "../../utils/consts";
 import { StorageService } from "../../service/StorageService";
 
-interface CitiesState {
+export interface CitiesState {
     cities: ICity[]
 }
 
@@ -64,22 +64,6 @@ export const citiesSlice = createSlice({
         toggleFavorite(state, action: PayloadAction<ICity>) {
             const targetIndex = state.cities.findIndex(c => c.id === action.payload.id)
             state.cities[targetIndex].isFavorite = !state.cities[targetIndex].isFavorite
-
-            const storageFavorites: string[] | undefined = StorageService.get('favorites')
-
-            if (state.cities[targetIndex].isFavorite) {
-                if (!storageFavorites) {
-                    return StorageService.set('favorites', [state.cities[targetIndex].name])
-                }
-
-                if (!storageFavorites.find(name => name === state.cities[targetIndex].name)) {
-                    storageFavorites.push(state.cities[targetIndex].name)
-                    StorageService.set('favorites', storageFavorites)
-                }
-            } else {
-                const filteredArr = storageFavorites?.filter(name => !(name === state.cities[targetIndex].name))
-                StorageService.set('favorites', filteredArr)
-            }
         }
     }
 })
