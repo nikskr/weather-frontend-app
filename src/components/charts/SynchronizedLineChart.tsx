@@ -2,12 +2,13 @@ import { Area, CartesianGrid, createHorizontalChart, Line, Tooltip, XAxis, YAxis
 import type { IForecastDateWeather, IForecastHourWeather } from '../../models/IWeather';
 import classes from './SynchronizedLineChart.module.css'
 import { calcAxisTitleWithUnits, calcAxisTitle } from '../../utils/axis';
+import type { ChartKind } from '../../models/ICommon';
 
 type DataType = IForecastDateWeather | IForecastHourWeather
 
 const Typed = createHorizontalChart<DataType, string, number>()({ Area, XAxis, YAxis, Tooltip, Line });
 
-const renderCommonWrapper = (type: string) => {
+const renderCommonWrapper = (type: ChartKind) => {
     return (metricName: string) => (
         <>
             <CartesianGrid />
@@ -61,7 +62,7 @@ const renderCommonWrapper = (type: string) => {
     );
 }
 
-export default function SynchronizedLineChart({ data, type }: { data: DataType[], type: string }) {
+export default function SynchronizedLineChart({ data, type }: { data: DataType[], type: ChartKind }) {
     const renderCommon = renderCommonWrapper(type)
     return (
         <div className={classes.lineChartContainer}>

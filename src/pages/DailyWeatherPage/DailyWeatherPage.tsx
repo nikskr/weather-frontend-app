@@ -7,7 +7,14 @@ import SynchronizedLineChart from "../../components/charts/SynchronizedLineChart
 
 const DailyWeatherPage = () => {
     const { cityName } = useParams()
-    const { data: dailyForecast, isLoading, error } = weatherAPI.useFetchForecastByLocationQuery(cityName as string)
+
+    if (!cityName) {
+        return (
+            <h1>Hour forecast data loading Error. Type of city name is not string</h1>
+        )
+    }
+
+    const { data: dailyForecast, isLoading, error } = weatherAPI.useFetchForecastByLocationQuery(cityName)
 
     if (isLoading) {
         return (
@@ -36,7 +43,7 @@ const DailyWeatherPage = () => {
                 <h2 className={classes.sectionTitle}>
                     Weather monitoring
                 </h2>
-                <SynchronizedLineChart data={dailyForecast.forecast.forecastday} type='date'/>
+                <SynchronizedLineChart data={dailyForecast.forecast.forecastday} type='date' />
             </div>
         </div>
     )

@@ -1,4 +1,6 @@
-export const calcAxisTitle = (type: string, metricName: string) => {
+import type { ChartKind } from "../models/ICommon"
+
+export const calcAxisTitle = (type: ChartKind, metricName: string) => {
     if (type === 'date') {
         if (metricName === 'Temperature') {
             return `Avg. temperature`
@@ -14,7 +16,7 @@ export const calcAxisTitle = (type: string, metricName: string) => {
     }
 }
 
-export const calcAxisTitleWithUnits = (type: string, metricName: string) => {
+export const calcAxisTitleWithUnits = (type: ChartKind, metricName: string) => {
     if (type === 'date') {
         if (metricName === 'Temperature') {
             return `Avg. temperature, °C`

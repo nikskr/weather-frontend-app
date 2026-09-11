@@ -1,6 +1,8 @@
 export interface ICity {
-    id?: number,
+    id: number,
     name: string,
     country?: string
-    isFavorite?: boolean
+    isFavorite: boolean
 }
+
+export type ChartKind = 'date' | 'hour'

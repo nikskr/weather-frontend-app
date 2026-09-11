@@ -9,9 +9,17 @@ import type { IForecastHourWeather } from "../../models/IWeather"
 
 const HourlyWeatherPage = () => {
     const { cityName, date } = useParams()
-    const { data: dailyForecast, isLoading, error } = weatherAPI.useFetchForecastByLocationQuery(cityName as string)
 
     const [activeCard, setActiveCard] = useState<IForecastHourWeather | null>(null)
+
+    if (!cityName) {
+        return (
+            <h1>Hour forecast data loading Error. Type of city name is not string</h1>
+        )
+    }
+
+    const { data: dailyForecast, isLoading, error } = weatherAPI.useFetchForecastByLocationQuery(cityName)
+
 
     if (isLoading) {
         return (

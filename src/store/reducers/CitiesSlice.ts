@@ -2,6 +2,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { ICity } from "../../models/ICommon";
 import { DEFAULT_CITIES } from "../../utils/consts";
 import { StorageService } from "../../service/StorageService";
+import type { ILocation } from "../../models/IWeather";
 
 export interface CitiesState {
     cities: ICity[]
@@ -52,7 +53,7 @@ export const citiesSlice = createSlice({
     name: 'cities',
     initialState,
     reducers: {
-        bringToTop(state, action: PayloadAction<ICity>) {
+        bringToTop(state, action: PayloadAction<ICity | ILocation>) {
             const targetIndex = state.cities.findIndex(c => c.name === action.payload.name)
             if (targetIndex !== -1) {
                 const [targetCity] = state.cities.splice(targetIndex, 1)
