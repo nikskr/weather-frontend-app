@@ -51,7 +51,7 @@ const CityCard = ({ city, pageCities, changePage, scrollHandler }: CityCardProps
         dispatch(bringToTop(city))
 
         if (city.id === firstCity?.id) {
-            navigate(`/${weatherData?.location.name}`, { replace: true })
+            navigate(`/forecast/${weatherData?.location.name}`, { replace: true })
         } else {
             changePage(1)
         }

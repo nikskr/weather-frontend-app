@@ -1,37 +1,20 @@
-import { useParams } from "react-router"
-import { weatherAPI } from "../../service/WeatherService"
-import HourForecastCard from "../../components/HourForecastCard/HourForecastCard"
-import Loader from "../../components/UI/Loader/Loader"
+import { useOutletContext, useParams } from "react-router"
+import HourForecastCard from "../../../components/HourForecastCard/HourForecastCard"
 import classes from './HourlyWeatherPage.module.css'
-import SynchronizedLineChart from "../../components/charts/SynchronizedLineChart"
+import SynchronizedLineChart from "../../../components/charts/SynchronizedLineChart"
 import { useState } from "react"
-import type { IForecastHourWeather } from "../../models/IWeather"
+import type { ICityForecast, IForecastHourWeather } from "../../../models/IWeather"
 
 const HourlyWeatherPage = () => {
-    const { cityName, date } = useParams()
+    const { date } = useParams()
+
+    const dailyForecast = useOutletContext<ICityForecast>(); 
 
     const [activeCard, setActiveCard] = useState<IForecastHourWeather | null>(null)
 
-    if (!cityName) {
+    if (!dailyForecast.location.name) {
         return (
             <h1>Hour forecast data loading Error. Type of city name is not string</h1>
-        )
-    }
-
-    const { data: dailyForecast, isLoading, error } = weatherAPI.useFetchForecastByLocationQuery(cityName)
-
-
-    if (isLoading) {
-        return (
-            <div className={classes.loader}>
-                <Loader />
-            </div>
-        )
-    }
-
-    if (error || !dailyForecast) {
-        return (
-            <h1>Hour forecast data loading Error</h1>
         )
     }
 

@@ -1,7 +1,8 @@
 export const FAVORITES_ROUTE = '/favorites'
 export const ABOUT_ROUTE = '/about'
-export const DAY_FORECAST_ROUTE = '/:cityName'
-export const HOUR_FORECAST_ROUTE = '/:cityName/:date'
+export const SHARED_FORECAST_ROUTE = '/forecast/:cityName'
+// export const DAY_FORECAST_ROUTE = '/forecast/:cityName'
+export const HOUR_FORECAST_ROUTE = ':date'
 
 export const DEFAULT_CITIES: string[] = import.meta.env.VITE_DEFAULT_CITIES ? import.meta.env.VITE_DEFAULT_CITIES.split(',') : []
 
