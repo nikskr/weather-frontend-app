@@ -1,13 +1,13 @@
-import { Routes, Route } from "react-router"
+import { RouterProvider, createBrowserRouter } from "react-router"
 import { routes } from "../routes"
+
+const router = createBrowserRouter(routes, {
+    basename: import.meta.env.BASE_URL
+})
 
 const AppRouter = () => {
     return (
-        <Routes>
-            {routes.map(({path, element}) => 
-                <Route key={path} path={path} element={element} />
-            )}
-        </Routes>
+        <RouterProvider router={router} />
     )
 }
 

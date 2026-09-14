@@ -6,33 +6,40 @@ import Loader from "../Loader/Loader";
 interface DataWrapperProps<T> {
     isLoading: boolean;
     error: FetchBaseQueryError | SerializedError | undefined;
-    dailyForecast: T | undefined;
+    data: T | undefined;
     children: React.ReactNode
 }
 
-function DataWrapper<T>({ isLoading, error, dailyForecast, children }: DataWrapperProps<T>) {
+function DataWrapper<T>({ isLoading, error, data, children }: DataWrapperProps<T>) {
 
     if (isLoading) {
+
         return (
-            <div className={classes.loader}>
-                <Loader />
+            <div className={classes.container}>
+                <div className={classes.loader}>
+                    <Loader />
+                </div>
             </div>
         )
     }
 
-    if (error || !dailyForecast) {
+    if (error || !data) {
         return (
-            <h1>Forecast data loading Error</h1>
+            <div className={classes.container}>
+                <h1>Forecast data loading Error</h1>
+            </div>
         )
     }
 
-    if (!dailyForecast) {
+    if (!data) {
         return (
-            <h1>No forecast data</h1>
+            <div className={classes.container}>
+                <h1>No forecast data</h1>
+            </div>
         )
     }
 
-    if (dailyForecast) {
+    if (data) {
         return (
             <>{children}</>
         )

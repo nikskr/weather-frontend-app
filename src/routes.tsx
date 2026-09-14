@@ -6,37 +6,44 @@ import { ABOUT_ROUTE, FAVORITES_ROUTE, HOUR_FORECAST_ROUTE, SHARED_FORECAST_ROUT
 import FavoritesPage from "./pages/FavoritesPage"
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage"
 import SharedForecastContainer from "./pages/SharedForecastContainer/SharedForecastContainer"
+import MainLayout from "./pages/MainLayout/MainLayout"
 
 export const routes = [
+
     {
         path: '/',
-        element: <MainPage />
-    },
-    {
-        path: FAVORITES_ROUTE,
-        element: <FavoritesPage />
-    },
-    {
-        path: ABOUT_ROUTE,
-        element: <AboutPage />
-    },
-    {
-        path: SHARED_FORECAST_ROUTE,
-        element: <SharedForecastContainer />,
+        element: <MainLayout />,
         children: [
             {
-                // path: DAY_FORECAST_ROUTE,
                 index: true,
-                element: <DailyWeatherPage />,
+                element: <MainPage />
             },
             {
-                path: HOUR_FORECAST_ROUTE,
-                element: <HourlyWeatherPage />
+                path: FAVORITES_ROUTE,
+                element: <FavoritesPage />
             },
+            {
+                path: ABOUT_ROUTE,
+                element: <AboutPage />
+            },
+            {
+                path: SHARED_FORECAST_ROUTE,
+                element: <SharedForecastContainer />,
+                children: [
+                    {
+                        index: true,
+                        element: <DailyWeatherPage />,
+                    },
+                    {
+                        path: HOUR_FORECAST_ROUTE,
+                        element: <HourlyWeatherPage />
+                    },
+                ]
+            },
+            {
+                path: "*",
+                element: <NotFoundPage />
+            }
         ]
-    },
-    {
-        path: "*",
-        element: <NotFoundPage />
     }
 ]

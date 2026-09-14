@@ -8,7 +8,7 @@ const SharedForecastContainer = () => {
     const { data: dailyForecast, isLoading, error } = weatherAPI.useFetchForecastByLocationQuery(cityName ?? '', { skip: !cityName })
 
     return (
-        <DataWrapper isLoading={isLoading} dailyForecast={dailyForecast} error={error}>
+        <DataWrapper isLoading={isLoading} data={dailyForecast} error={error}>
             <Outlet context={dailyForecast} />
         </DataWrapper>
     )

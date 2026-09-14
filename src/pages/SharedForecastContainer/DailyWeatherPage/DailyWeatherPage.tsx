@@ -5,9 +5,10 @@ import type { ICityForecast } from "../../../models/IWeather"
 import { useOutletContext } from "react-router"
 
 const DailyWeatherPage = () => {
+
     const dailyForecast = useOutletContext<ICityForecast>();
-    console.log(123)
-     return (
+
+    return (
         <div>
             <h1 className={classes.header}>
                 Daily forecast for {dailyForecast.location.name}, {dailyForecast.location.country}
