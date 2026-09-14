@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import CityCard from "../CityCard/CityCard"
 import classes from './CityContainer.module.css'
 import { StorageService } from "../../service/StorageService"
 import { usePageCities } from "../../hooks/usePageCities"
+import { usePrefetch } from "../../service/WeatherService"
 
 interface CityContainerProps {
     isFavorites: boolean
@@ -22,6 +23,17 @@ const CityContainer = ({ isFavorites }: CityContainerProps) => {
     }
 
     const listRef = useRef<HTMLDivElement>(null);
+
+    const prefetchNextCity = usePrefetch('fetchCurrentWeatherByLocation')
+    const nextPage = page >= pagesArray.length ? 1 : page + 1
+    
+    const { pageCities: nextPageCities } = usePageCities(isFavorites, nextPage, limit)
+
+    useEffect(() => {
+        nextPageCities.forEach(city => {
+            prefetchNextCity(city.name)
+        })
+    }, [page, nextPageCities, prefetchNextCity])
 
     function handleLimitChange(e: React.ChangeEvent<HTMLSelectElement>) {
         setLimit(Number(e.target.value))

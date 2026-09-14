@@ -27,3 +27,5 @@ export const weatherAPI = createApi({
 
     })
 })
+
+export const { usePrefetch } = weatherAPI
